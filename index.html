@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <script>
+        class Halloween extends Phaser.Scene
+        {
+            constructor ()
+            {
+                super();
+            }
+
+            preload ()
+            {
+                this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+            }
+
+            create ()
+            {
+                var add = this.add;
+
+                WebFont.load({
+                    google: {
+                        families: [ 'Creepster' ]
+                    },
+                    active: function ()
+                    {
+                        add.text(0, 0, 'Halloween', { fontFamily: 'Creepster', fontSize: 80, color: '#fff' });
+                    }
+                });
+            }
+
+            update ()
+            {
+            
+            }
+        }
+
+        const config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            backgroundColor: '#2d2d2d',
+            parent: 'phaser-example',
+            scene: [Halloween]
+        };
+
+        const game = new Phaser.Game(config);
+    </script>
+</body>
+</html>
